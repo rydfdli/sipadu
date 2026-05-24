@@ -29,20 +29,12 @@
 html { scroll-behavior: smooth; }
 body {
   font-family: 'Geist', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  min-height: 100vh;
-  overflow-x: hidden;
+  background: var(--bg); color: var(--text);
+  min-height: 100vh; overflow-x: hidden;
 }
 
-/* ── BACKGROUND ── */
-.bg-scene {
-  position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none;
-}
-.orb {
-  position: absolute; border-radius: 50%;
-  filter: blur(90px); will-change: transform;
-}
+.bg-scene { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+.orb { position: absolute; border-radius: 50%; filter: blur(90px); will-change: transform; }
 .o1{width:700px;height:700px;top:-180px;left:-160px;background:radial-gradient(#0a5c5c,#062d40,transparent 70%);opacity:.65;animation:f1 20s ease-in-out infinite;}
 .o2{width:500px;height:500px;top:25%;right:-120px;background:radial-gradient(#0c3a6b,#091f4a,transparent 70%);opacity:.45;animation:f2 24s ease-in-out infinite;}
 .o3{width:420px;height:420px;bottom:-80px;left:22%;background:radial-gradient(#0c5940,#063322,transparent 70%);opacity:.5;animation:f3 18s ease-in-out infinite;}
@@ -53,7 +45,7 @@ body {
 @keyframes f4{0%,100%{transform:translate(0,0)}30%{transform:translate(50px,-30px)}70%{transform:translate(-20px,50px)}}
 .grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px;}
 
-/* ── TOPBAR ── */
+/* TOPBAR */
 .topbar {
   position: sticky; top: 0; z-index: 100;
   height: 54px; padding: 0 28px;
@@ -75,21 +67,11 @@ body {
   display: flex; align-items: center; justify-content: center;
   font-size: 15px; box-shadow: 0 2px 12px rgba(45,212,191,.28);
 }
-
-/* Breadcrumb */
-.breadcrumb {
-  display: flex; align-items: center; gap: 6px;
-  font-size: 12.5px; flex: 1; overflow: hidden;
-}
-.bc-sep { color: var(--dim); flex-shrink: 0; }
-.bc-item {
-  color: var(--muted); cursor: pointer; white-space: nowrap;
-  overflow: hidden; text-overflow: ellipsis;
-  transition: color .2s;
-}
+.breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 12.5px; flex: 1; overflow: hidden; }
+.bc-sep { color: var(--dim); flex-shrink:0; }
+.bc-item { color: var(--muted); cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: color .2s; }
 .bc-item:hover { color: var(--text); }
 .bc-item.active { color: var(--text); font-weight: 600; cursor: default; }
-
 .topbar-right {
   margin-left: auto; flex-shrink: 0;
   display: flex; align-items: center; gap: 7px;
@@ -98,55 +80,42 @@ body {
   background: rgba(45,212,191,.08); border: 1px solid rgba(45,212,191,.22);
   padding: 5px 13px; border-radius: 100px;
 }
-.pulse-dot {
-  width: 6px; height: 6px; border-radius: 50%; background: var(--teal);
-  animation: lp 2s ease-in-out infinite;
-}
+.pulse-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); animation: lp 2s ease-in-out infinite; }
 @keyframes lp{0%{box-shadow:0 0 0 0 rgba(45,212,191,.7)}70%{box-shadow:0 0 0 7px rgba(45,212,191,0)}100%{box-shadow:0 0 0 0 rgba(45,212,191,0)}}
 
-/* ── PAGE SYSTEM ── */
 .page { display: none; position: relative; z-index: 2; }
 .page.active { display: block; animation: pageIn .4s ease both; }
 @keyframes pageIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 
-/* ══════════════════════════════
-   HOME PAGE
-══════════════════════════════ */
+/* HOME HERO */
 .home-hero {
   max-width: 1080px; margin: 0 auto;
-  padding: 64px 32px 0;
+  padding: 56px 32px 0;
   display: grid; grid-template-columns: 1fr 1fr;
-  align-items: center; gap: 48px;
+  align-items: center; gap: 40px;
 }
-
-.hero-copy { animation: slideUp .65s ease both; }
+.hero-copy { animation: slideUp .65s ease both; overflow: visible; }
 @keyframes slideUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-
-.eyebrow {
-  display: flex; align-items: center; gap: 10px; margin-bottom: 22px;
-}
+.eyebrow { display: flex; align-items: center; gap: 10px; margin-bottom: 22px; }
 .ey-line { width: 30px; height: 1px; background: var(--teal); }
 .ey-text { font-size: 11px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--teal); }
 
 .hero-h1 {
   font-family: 'Instrument Serif', serif;
-  font-size: clamp(72px,10vw,110px);
-  line-height: .95; letter-spacing: -.04em;
-  margin-bottom: 6px;
-}
-.hero-akronim {
-  font-size: 13.5px; color: var(--muted); line-height: 1.5;
-  margin-bottom: 16px; font-weight: 400;
-  border-left: 2px solid rgba(45,212,191,0.4);
-  padding-left: 12px;
+  font-size: clamp(64px, 8.5vw, 96px);
+  line-height: 1; letter-spacing: -.04em; margin-bottom: 6px;
+  overflow: visible;
 }
 .hero-h1 em {
   font-style: italic;
   background: linear-gradient(120deg,var(--teal),var(--blue));
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-  display: inline-block;
-  padding: 0 0.2em 0.05em 0.02em;
-  margin-right: -0.1em;
+  display: inline-block; padding: 0 0.2em 0.05em 0.02em; margin-right: -0.1em;
+}
+.hero-akronim {
+  font-size: 13.5px; color: var(--muted); line-height: 1.5;
+  margin-bottom: 18px; font-weight: 400;
+  border-left: 2px solid rgba(45,212,191,0.4); padding-left: 12px;
 }
 .hero-sub { font-size: 13.5px; color: var(--muted); line-height: 1.72; max-width: 420px; margin-bottom: 28px; }
 
@@ -160,7 +129,6 @@ body {
 .st-n { font-family: 'Instrument Serif', serif; font-size: 24px; line-height: 1; margin-bottom: 3px; }
 .st-l { font-size: 9.5px; font-weight: 500; color: var(--muted); letter-spacing: .07em; text-transform: uppercase; }
 
-/* Hero visual */
 .hero-visual { animation: slideUp .65s .12s ease both; position: relative; height: 400px; }
 .vis-main {
   position: absolute; inset: 0 0 30px 10px;
@@ -169,18 +137,16 @@ body {
   backdrop-filter: blur(28px) saturate(180%);
   -webkit-backdrop-filter: blur(28px) saturate(180%);
   border: 1px solid rgba(255,255,255,.15);
-  box-shadow: 0 20px 60px rgba(0,0,0,.32), inset 0 1px 0 rgba(255,255,255,.22), inset 0 -1px 0 rgba(0,0,0,.15);
+  box-shadow: 0 20px 60px rgba(0,0,0,.32), inset 0 1px 0 rgba(255,255,255,.22);
 }
 .vis-main::before {
   content:''; position:absolute; top:0;left:8%;right:8%;height:1px;
   background:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent);
 }
 .float-card {
-  position: absolute; z-index: 4;
-  padding: 10px 16px; border-radius: 14px;
+  position: absolute; z-index: 4; padding: 10px 16px; border-radius: 14px;
   background: rgba(255,255,255,.1);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255,255,255,.18);
   box-shadow: 0 6px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.18);
   font-size: 12px;
@@ -191,21 +157,23 @@ body {
 .fc-label { font-size: 9.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
 .fc-val { font-size: 13px; font-weight: 600; }
 
-/* Klaster nav grid */
+/* HOME GRID */
 .home-klaster-section { max-width: 1080px; margin: 0 auto; padding: 52px 32px 80px; }
 .sec-hdr { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
 .sec-tag { font-size: 10.5px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--dim); }
 .sec-rule { flex: 1; height: 1px; background: rgba(255,255,255,.07); }
-
-.klaster-nav {
-  display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-bottom: 14px;
+.year-pill {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 4px 11px; border-radius: 100px;
+  background: rgba(45,212,191,.1); border: 1px solid rgba(45,212,191,.25);
+  font-size: 10.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--teal);
 }
-.klaster-nav .last-row {
-  grid-column: 1 / -1;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
-}
+.year-pill-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--teal); }
 
-/* ── GLASS CARD (reusable) ── */
+.klaster-nav { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-bottom: 14px; }
+.klaster-nav .last-row { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
 .gcard {
   position: relative; border-radius: 20px; cursor: pointer;
   text-decoration: none; color: inherit; overflow: hidden;
@@ -213,7 +181,7 @@ body {
   backdrop-filter: blur(var(--blur)) saturate(180%);
   -webkit-backdrop-filter: blur(var(--blur)) saturate(180%);
   border: var(--g-border); box-shadow: var(--g-shadow);
-  transition: transform .28s cubic-bezier(.22,.68,0,1.2), box-shadow .28s ease, background .25s;
+  transition: transform .28s cubic-bezier(.22,.68,0,1.2), box-shadow .28s, background .25s;
   padding: 26px 24px 22px;
   display: flex; flex-direction: column; gap: 12px;
 }
@@ -226,7 +194,7 @@ body {
   background: var(--glow, none); opacity:0; transition:opacity .3s;
   pointer-events:none;
 }
-.gcard:hover { transform:translateY(-5px) scale(1.01); background:rgba(255,255,255,.11); box-shadow:0 20px 56px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.24),inset 0 -1px 0 rgba(0,0,0,.15),0 0 0 1px rgba(255,255,255,.14); }
+.gcard:hover { transform:translateY(-5px) scale(1.01); background:rgba(255,255,255,.11); box-shadow:0 20px 56px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.24),0 0 0 1px rgba(255,255,255,.14); }
 .gcard:hover::after { opacity:1; }
 
 .gc-top { display:flex;align-items:flex-start;justify-content:space-between; }
@@ -258,14 +226,12 @@ body {
 .gcard:hover .gc-arrow { background:var(--c,var(--teal));border-color:var(--c,var(--teal));box-shadow:0 0 14px var(--c-glow,rgba(45,212,191,.4));transform:translateX(2px); }
 .gcard:hover .gc-arrow svg { stroke:#060d18; }
 
-/* ══════════════════════════════
-   KLASTER DETAIL PAGE
-══════════════════════════════ */
-.klaster-page { max-width: 960px; margin: 0 auto; padding: 48px 32px 80px; }
+/* ═══ KLASTER PAGE ═══ */
+.klaster-page { max-width: 960px; margin: 0 auto; padding: 40px 32px 80px; }
 
 .kp-header {
-  display: flex; align-items: flex-start; gap: 22px; margin-bottom: 44px;
-  padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,.07);
+  display: flex; align-items: flex-start; gap: 22px; margin-bottom: 28px;
+  padding-bottom: 28px; border-bottom: 1px solid rgba(255,255,255,.07);
 }
 .kp-icon-big {
   width: 64px; height: 64px; border-radius: 18px; font-size: 30px;
@@ -288,10 +254,102 @@ body {
 }
 .kp-desc { font-size: 13.5px; color: var(--muted); line-height: 1.68; max-width: 560px; }
 
-/* Sub-folder grid */
-.subfolder-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 13px; }
+/* ── PERIOD SELECTOR BAR ── */
+.period-bar {
+  position: relative; z-index: 50;
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 28px; padding: 18px 20px;
+  border-radius: 16px;
+  background: rgba(255,255,255,.05);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(255,255,255,.1);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.14);
+  flex-wrap: wrap;
+}
+.period-label {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--muted);
+}
+.period-label-icon {
+  width: 28px; height: 28px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(45,212,191,.1); border: 1px solid rgba(45,212,191,.22);
+  color: var(--teal); font-size: 14px;
+}
 
-/* Sub-folder card */
+.dropdown-wrap { position: relative; z-index: 100; }
+.dropdown-trigger {
+  display: flex; align-items: center; gap: 10px;
+  min-width: 140px; padding: 9px 14px;
+  border-radius: 10px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.15);
+  font-family: 'Geist', sans-serif; font-size: 13px; font-weight: 600;
+  color: var(--text); cursor: pointer;
+  transition: all .18s ease;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
+}
+.dropdown-trigger:hover {
+  background: rgba(255,255,255,.1);
+  border-color: rgba(255,255,255,.25);
+}
+.dropdown-trigger.open {
+  border-color: var(--teal);
+  background: rgba(45,212,191,.08);
+  box-shadow: 0 0 0 3px rgba(45,212,191,.12), inset 0 1px 0 rgba(255,255,255,.1);
+}
+.dt-text { flex: 1; text-align: left; }
+.dt-caret {
+  transition: transform .25s ease;
+  color: var(--muted);
+}
+.dropdown-trigger.open .dt-caret { transform: rotate(180deg); color: var(--teal); }
+
+.dropdown-menu {
+  position: absolute; top: calc(100% + 6px); left: 0;
+  min-width: 100%;
+  background: rgba(20,30,48,.85);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.16);
+  padding: 6px;
+  z-index: 200;
+  max-height: 280px; overflow-y: auto;
+  opacity: 0; transform: translateY(-6px) scale(.97);
+  pointer-events: none;
+  transition: opacity .2s, transform .2s;
+}
+.dropdown-menu.open { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+.dropdown-menu::-webkit-scrollbar { width: 6px; }
+.dropdown-menu::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 3px; }
+
+.dropdown-option {
+  padding: 8px 14px; border-radius: 7px;
+  font-size: 13px; color: var(--muted);
+  cursor: pointer; transition: all .15s;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.dropdown-option:hover { background: rgba(255,255,255,.08); color: var(--text); }
+.dropdown-option.selected {
+  background: rgba(45,212,191,.15); color: var(--teal); font-weight: 600;
+}
+.dropdown-option.selected::after {
+  content: '✓'; font-size: 12px; color: var(--teal);
+}
+
+.period-summary {
+  margin-left: auto; display: flex; align-items: center; gap: 7px;
+  font-size: 12px; color: var(--muted);
+}
+.period-summary strong { color: var(--text); font-weight: 600; }
+
+/* SUB-FOLDER GRID */
+.subfolder-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 13px; position: relative; z-index: 1; }
+
 .sfcard {
   position: relative; border-radius: 16px; cursor: pointer;
   text-decoration: none; color: inherit; overflow: hidden;
@@ -302,14 +360,14 @@ body {
   box-shadow: 0 4px 24px rgba(0,0,0,.24), inset 0 1px 0 rgba(255,255,255,.18);
   padding: 20px 20px 16px;
   display: flex; align-items: flex-start; gap: 14px;
-  transition: transform .25s cubic-bezier(.22,.68,0,1.2), box-shadow .25s ease, background .2s;
+  transition: transform .25s cubic-bezier(.22,.68,0,1.2), box-shadow .25s, background .2s;
+  animation: popUp .4s ease both;
 }
 .sfcard::before {
   content:''; position:absolute;top:0;left:6%;right:6%;height:1px;
   background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);
 }
 .sfcard:hover { transform:translateY(-4px) scale(1.01); background:rgba(255,255,255,.1); box-shadow:0 14px 40px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.22),0 0 0 1px rgba(255,255,255,.12); }
-
 .sf-icon {
   width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
   display: flex; align-items: center; justify-content: center; font-size: 20px;
@@ -330,34 +388,15 @@ body {
 }
 .sfcard:hover .sf-open { opacity: 1; }
 
-/* ── EMPTY / COMING SOON ── */
-.empty-state {
-  grid-column: 1/-1; padding: 40px; text-align: center;
-  border-radius: 16px; background: rgba(255,255,255,.04);
-  border: 1px dashed rgba(255,255,255,.1);
-  color: var(--dim); font-size: 13px;
-}
-
-/* ── STAGGER ANIMATION ── */
-.sfcard { animation: popUp .4s ease both; }
-.sfcard:nth-child(1){animation-delay:.05s}
-.sfcard:nth-child(2){animation-delay:.1s}
-.sfcard:nth-child(3){animation-delay:.15s}
-.sfcard:nth-child(4){animation-delay:.2s}
-.sfcard:nth-child(5){animation-delay:.25s}
-.sfcard:nth-child(6){animation-delay:.3s}
-.sfcard:nth-child(7){animation-delay:.35s}
-.sfcard:nth-child(8){animation-delay:.4s}
-@keyframes popUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-
+@keyframes popUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.sfcard:nth-child(1){animation-delay:.04s} .sfcard:nth-child(2){animation-delay:.09s}
+.sfcard:nth-child(3){animation-delay:.14s} .sfcard:nth-child(4){animation-delay:.19s}
+.sfcard:nth-child(5){animation-delay:.24s} .sfcard:nth-child(6){animation-delay:.29s}
 .gcard { animation: popUp .4s ease both; }
-.gcard:nth-child(1){animation-delay:.06s}
-.gcard:nth-child(2){animation-delay:.12s}
-.gcard:nth-child(3){animation-delay:.18s}
-.gcard:nth-child(4){animation-delay:.24s}
+.gcard:nth-child(1){animation-delay:.06s} .gcard:nth-child(2){animation-delay:.12s}
+.gcard:nth-child(3){animation-delay:.18s} .gcard:nth-child(4){animation-delay:.24s}
 .gcard:nth-child(5){animation-delay:.30s}
 
-/* ── FOOTER ── */
 footer {
   position: relative; z-index: 2; padding: 22px 32px;
   border-top: 1px solid rgba(255,255,255,.07);
@@ -368,7 +407,6 @@ footer {
 .ft-l strong { color: rgba(255,255,255,.55); font-weight: 600; }
 .ft-r { font-size: 11px; color: var(--dim); }
 
-/* ── RESPONSIVE ── */
 @media(max-width:768px){
   .home-hero{grid-template-columns:1fr;padding:40px 18px 0;}
   .hero-visual{height:260px;}
@@ -378,6 +416,9 @@ footer {
   .klaster-page{padding:32px 18px 60px;}
   .subfolder-grid{grid-template-columns:1fr;}
   .kp-header{flex-direction:column;gap:14px;}
+  .period-bar{flex-direction:column;align-items:stretch;}
+  .period-summary{margin-left:0;}
+  .dropdown-trigger{width:100%;}
 }
 </style>
 </head>
@@ -389,7 +430,6 @@ footer {
 </div>
 <div class="grain"></div>
 
-<!-- TOPBAR -->
 <nav class="topbar">
   <div class="brand" onclick="goHome()">
     <div class="brand-mark">🏥</div>
@@ -399,42 +439,34 @@ footer {
   <div class="topbar-right"><span class="pulse-dot"></span>Sistem Aktif</div>
 </nav>
 
-<!-- ════════════ HOME PAGE ════════════ -->
+<!-- HOME -->
 <div class="page active" id="page-home">
-
-  <!-- HERO -->
   <div class="home-hero">
     <div class="hero-copy">
       <div class="eyebrow"><span class="ey-line"></span><span class="ey-text">Aktualisasi CPNS · Latsar 2026</span></div>
       <h1 class="hero-h1"><em>SIPADU</em></h1>
       <p class="hero-akronim">Sistem Informasi Pengelolaan<br/>Arsip dan Dokumen Umum</p>
-      <p class="hero-sub">Portal ini merupakan hasil dari kegiatan aktualisasi Pelatihan Dasar CPNS dalam rangka optimalisasi pengelolaan data laporan dan administrasi UPT Puskesmas Sapala secara terpusat, terstruktur, dan berbasis digital.</p>
+      <p class="hero-sub">Portal ini merupakan media optimalisasi kegiatan aktualisasi dan habituasi Pelatihan Dasar CPNS dalam rangka optimalisasi pengelolaan data laporan dan administrasi UPT Puskesmas Sapala secara terpusat, terstruktur, dan berbasis digital.</p>
       <div class="hero-stats">
         <div class="st-item"><div class="st-n">KMK</div><div class="st-l">Dasar Struktur</div></div>
         <div class="st-item"><div class="st-n">BerAKHLAK</div><div class="st-l">Nilai Dasar</div></div>
-        <div class="st-item"><div class="st-n">2026</div><div class="st-l">Aktualisasi</div></div>
+        <div class="st-item"><div class="st-n">2026</div><div class="st-l">Arsip Aktif</div></div>
       </div>
     </div>
-
     <div class="hero-visual">
       <div class="vis-main">
         <svg width="100%" height="100%" viewBox="0 0 380 330" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
           <rect width="380" height="330" fill="rgba(6,13,24,0.2)"/>
-          <!-- Glow -->
           <ellipse cx="190" cy="150" rx="150" ry="110" fill="rgba(45,212,191,0.06)"/>
-          <ellipse cx="280" cy="260" rx="90" ry="70" fill="rgba(96,165,250,0.05)"/>
-          <!-- Grid -->
           <g stroke="rgba(255,255,255,0.045)" stroke-width="1">
             <line x1="0" y1="66" x2="380" y2="66"/><line x1="0" y1="132" x2="380" y2="132"/>
             <line x1="0" y1="198" x2="380" y2="198"/><line x1="0" y1="264" x2="380" y2="264"/>
             <line x1="76" y1="0" x2="76" y2="330"/><line x1="152" y1="0" x2="152" y2="330"/>
             <line x1="228" y1="0" x2="228" y2="330"/><line x1="304" y1="0" x2="304" y2="330"/>
           </g>
-          <!-- 5 folder cards -->
           <g opacity="0.85">
             <g transform="translate(30,40)"><animateTransform attributeName="transform" type="translate" values="30,40;30,33;30,40" dur="4s" repeatCount="indefinite"/>
               <rect width="88" height="58" rx="8" fill="rgba(45,212,191,0.1)" stroke="rgba(45,212,191,0.35)" stroke-width="1"/>
-              <rect x="1" y="1" width="86" height="1" rx=".5" fill="rgba(255,255,255,0.3)" opacity=".7"/>
               <rect x="8" y="12" width="36" height="5" rx="2.5" fill="rgba(45,212,191,0.6)"/>
               <rect x="8" y="22" width="56" height="3" rx="1.5" fill="rgba(255,255,255,0.12)"/>
               <rect x="8" y="30" width="44" height="3" rx="1.5" fill="rgba(255,255,255,0.08)"/>
@@ -442,7 +474,6 @@ footer {
             </g>
             <g transform="translate(140,60)"><animateTransform attributeName="transform" type="translate" values="140,60;140,53;140,60" dur="3.5s" begin=".5s" repeatCount="indefinite"/>
               <rect width="88" height="58" rx="8" fill="rgba(96,165,250,0.1)" stroke="rgba(96,165,250,0.35)" stroke-width="1"/>
-              <rect x="1" y="1" width="86" height="1" rx=".5" fill="rgba(255,255,255,0.3)" opacity=".7"/>
               <rect x="8" y="12" width="36" height="5" rx="2.5" fill="rgba(96,165,250,0.6)"/>
               <rect x="8" y="22" width="56" height="3" rx="1.5" fill="rgba(255,255,255,0.12)"/>
               <rect x="8" y="30" width="44" height="3" rx="1.5" fill="rgba(255,255,255,0.08)"/>
@@ -450,7 +481,6 @@ footer {
             </g>
             <g transform="translate(258,45)"><animateTransform attributeName="transform" type="translate" values="258,45;258,38;258,45" dur="4.2s" begin="1s" repeatCount="indefinite"/>
               <rect width="88" height="58" rx="8" fill="rgba(251,113,133,0.1)" stroke="rgba(251,113,133,0.35)" stroke-width="1"/>
-              <rect x="1" y="1" width="86" height="1" rx=".5" fill="rgba(255,255,255,0.3)" opacity=".7"/>
               <rect x="8" y="12" width="36" height="5" rx="2.5" fill="rgba(251,113,133,0.6)"/>
               <rect x="8" y="22" width="56" height="3" rx="1.5" fill="rgba(255,255,255,0.12)"/>
               <rect x="8" y="30" width="44" height="3" rx="1.5" fill="rgba(255,255,255,0.08)"/>
@@ -458,7 +488,6 @@ footer {
             </g>
             <g transform="translate(60,170)"><animateTransform attributeName="transform" type="translate" values="60,170;60,163;60,170" dur="3.8s" begin=".3s" repeatCount="indefinite"/>
               <rect width="88" height="58" rx="8" fill="rgba(167,139,250,0.1)" stroke="rgba(167,139,250,0.35)" stroke-width="1"/>
-              <rect x="1" y="1" width="86" height="1" rx=".5" fill="rgba(255,255,255,0.3)" opacity=".7"/>
               <rect x="8" y="12" width="36" height="5" rx="2.5" fill="rgba(167,139,250,0.6)"/>
               <rect x="8" y="22" width="56" height="3" rx="1.5" fill="rgba(255,255,255,0.12)"/>
               <rect x="8" y="30" width="44" height="3" rx="1.5" fill="rgba(255,255,255,0.08)"/>
@@ -466,56 +495,42 @@ footer {
             </g>
             <g transform="translate(200,180)"><animateTransform attributeName="transform" type="translate" values="200,180;200,173;200,180" dur="4.5s" begin=".8s" repeatCount="indefinite"/>
               <rect width="88" height="58" rx="8" fill="rgba(251,191,36,0.1)" stroke="rgba(251,191,36,0.35)" stroke-width="1"/>
-              <rect x="1" y="1" width="86" height="1" rx=".5" fill="rgba(255,255,255,0.3)" opacity=".7"/>
               <rect x="8" y="12" width="36" height="5" rx="2.5" fill="rgba(251,191,36,0.6)"/>
               <rect x="8" y="22" width="56" height="3" rx="1.5" fill="rgba(255,255,255,0.12)"/>
               <rect x="8" y="30" width="44" height="3" rx="1.5" fill="rgba(255,255,255,0.08)"/>
               <text x="8" y="50" font-size="8" fill="rgba(251,191,36,0.7)" font-family="sans-serif">LK</text>
             </g>
           </g>
-          <!-- Connection lines -->
-          <g stroke="rgba(255,255,255,0.08)" stroke-width="1" stroke-dasharray="3,4" fill="none">
-            <line x1="118" y1="69" x2="140" y2="89"/>
-            <line x1="228" y1="89" x2="258" y2="74"/>
-            <line x1="148" y1="118" x2="148" y2="170"/>
-            <line x1="288" y1="103" x2="244" y2="180"/>
-          </g>
-          <!-- Center logo -->
           <g transform="translate(155, 115)">
             <circle cx="35" cy="35" r="34" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
             <circle cx="35" cy="35" r="25" fill="rgba(45,212,191,0.08)" stroke="rgba(45,212,191,0.25)" stroke-width="1"/>
             <text x="35" y="41" text-anchor="middle" font-size="20" fill="rgba(255,255,255,0.8)">🏥</text>
           </g>
-          <!-- Bottom folders -->
-          <g transform="translate(20,265)" opacity="0.6">
-            <g><path d="M0,6 L0,28 Q0,32 4,32 L32,32 Q36,32 36,28 L36,10 Q36,6 32,6 L18,6 L14,2 L4,2 Q0,2 0,6Z" fill="rgba(45,212,191,0.15)" stroke="rgba(45,212,191,0.4)" stroke-width="1"/></g>
-            <g transform="translate(46,0)"><path d="M0,6 L0,28 Q0,32 4,32 L32,32 Q36,32 36,28 L36,10 Q36,6 32,6 L18,6 L14,2 L4,2 Q0,2 0,6Z" fill="rgba(96,165,250,0.15)" stroke="rgba(96,165,250,0.4)" stroke-width="1"/></g>
-            <g transform="translate(92,0)"><path d="M0,6 L0,28 Q0,32 4,32 L32,32 Q36,32 36,28 L36,10 Q36,6 32,6 L18,6 L14,2 L4,2 Q0,2 0,6Z" fill="rgba(251,113,133,0.15)" stroke="rgba(251,113,133,0.4)" stroke-width="1"/></g>
-            <g transform="translate(138,0)"><path d="M0,6 L0,28 Q0,32 4,32 L32,32 Q36,32 36,28 L36,10 Q36,6 32,6 L18,6 L14,2 L4,2 Q0,2 0,6Z" fill="rgba(167,139,250,0.15)" stroke="rgba(167,139,250,0.4)" stroke-width="1"/></g>
-            <g transform="translate(184,0)"><path d="M0,6 L0,28 Q0,32 4,32 L32,32 Q36,32 36,28 L36,10 Q36,6 32,6 L18,6 L14,2 L4,2 Q0,2 0,6Z" fill="rgba(251,191,36,0.15)" stroke="rgba(251,191,36,0.4)" stroke-width="1"/></g>
-          </g>
         </svg>
       </div>
       <div class="float-card fc1">
-        <div class="fc-label">Struktur Folder</div>
-        <div class="fc-val">Berbasis KMK</div>
+        <div class="fc-label">Struktur</div>
+        <div class="fc-val">5 Klaster KMK</div>
       </div>
       <div class="float-card fc2">
-        <div class="fc-label">Penyimpanan</div>
-        <div class="fc-val" style="color:var(--teal)">Terpusat ✓</div>
+        <div class="fc-label">Periode</div>
+        <div class="fc-val" style="color:var(--teal)">Tahun · Bulan</div>
       </div>
     </div>
   </div>
 
-  <!-- KLASTER NAVIGATION -->
   <div class="home-klaster-section">
-    <div class="sec-hdr"><span class="sec-tag">Pilih Klaster</span><div class="sec-rule"></div></div>
+    <div class="sec-hdr">
+      <span class="sec-tag">Pilih Klaster</span>
+      <div class="sec-rule"></div>
+      <span class="year-pill"><span class="year-pill-dot"></span>Arsip 2026</span>
+    </div>
     <div class="klaster-nav">
       <div class="gcard" style="--c:var(--teal);--glow:radial-gradient(circle at 50% 0%,rgba(45,212,191,0.13),transparent 65%);--ic-bg:rgba(45,212,191,0.12);--ic-border:rgba(45,212,191,0.25);--ic-shadow:rgba(45,212,191,0.18);" onclick="goKlaster('k1')">
         <div class="gc-top"><div class="gc-icon">🗂️</div><span class="gc-badge" style="--c:var(--teal)">Klaster 1</span></div>
         <div class="gc-title">Manajemen Puskesmas</div>
-        <div class="gc-desc">Perencanaan, kepegawaian, keuangan, mutu, dan dokumen manajerial operasional.</div>
-        <div class="gc-footer"><span class="gc-sub">6 sub-folder</span><div class="gc-arrow" style="--c:var(--teal);--c-glow:rgba(45,212,191,0.4)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
+        <div class="gc-desc">Kunjungan pasien, keuangan, SDM, BLUD, RME, SPM, dan pelayanan administratif lainnya.</div>
+        <div class="gc-footer"><span class="gc-sub">12 sub-folder</span><div class="gc-arrow" style="--c:var(--teal);--c-glow:rgba(45,212,191,0.4)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
       </div>
       <div class="gcard" style="--c:var(--blue);--glow:radial-gradient(circle at 50% 0%,rgba(96,165,250,0.13),transparent 65%);--ic-bg:rgba(96,165,250,0.12);--ic-border:rgba(96,165,250,0.25);--ic-shadow:rgba(96,165,250,0.18);" onclick="goKlaster('k2')">
         <div class="gc-top"><div class="gc-icon">🤱</div><span class="gc-badge" style="--c:var(--blue)">Klaster 2</span></div>
@@ -547,124 +562,166 @@ footer {
   </div>
 </div>
 
-<!-- ════════════ KLASTER PAGES (generated by JS) ════════════ -->
 <div class="page" id="page-klaster"></div>
 
-<!-- FOOTER -->
 <footer>
-  <div class="ft-l"><strong>SIPADU</strong> — Sistem Informasi Pengelolaan Arsip dan Dokumen Umum<br/>UPT Puskesmas Sapala · Aktualisasi Pelatihan Dasar CPNS 2026</div>
-  <div class="ft-r">Penata Kelola Sistem dan Teknologi Informasi · Riyadi Fadli,S.Kom</div>
+  <div class="ft-l"><strong>SIPADU</strong> — Sistem Informasi Pengelolaan Arsip dan Dokumen Umum<br/>Puskesmas · Aktualisasi Pelatihan Dasar CPNS 2026</div>
+  <div class="ft-r">Penata Kelola Sistem dan Teknologi Informasi · Riyadi Fadli, S.Kom</div>
 </footer>
 
 <script>
 /* ═══════════════════════════════════════════
-   DATA — ganti URL sesuai folder penyimpanan
+   KONFIGURASI
 ═══════════════════════════════════════════ */
+const TAHUN_TERSEDIA = [2024, 2025, 2026];
+const TAHUN_AKTIF = 2026;
+
+const NAMA_BULAN = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+const SLUG_BULAN = ['JAN','FEB','MAR','APR','MEI','JUN','JUL','AGU','SEP','OKT','NOV','DES'];
+
+/* Slug klaster untuk membentuk pola ID */
+const SLUG_KLASTER = { k1:'K1', k2:'K2', k3:'K3', k4:'K4', lk:'LK' };
+
+/* Data klaster + sub-folder topiknya */
 const KLASTER_DATA = {
   k1: {
-    id: 'k1', emoji: '🗂️', label: 'Klaster 1', color: 'var(--teal)',
-    icBg: 'rgba(45,212,191,0.12)', icBorder: 'rgba(45,212,191,0.25)', icShadow: 'rgba(45,212,191,0.18)',
-    title: 'Manajemen Puskesmas',
-    desc: 'Seluruh dokumen perencanaan, kepegawaian, keuangan, dan pengelolaan mutu Puskesmas.',
+    id:'k1', emoji:'🗂️', label:'Klaster 1', color:'var(--teal)',
+    icBg:'rgba(45,212,191,0.12)', icBorder:'rgba(45,212,191,0.25)', icShadow:'rgba(45,212,191,0.18)',
+    title:'Manajemen Puskesmas',
+    desc:'Seluruh dokumen manajemen, pelayanan administratif, keuangan, kepegawaian, dan pelaporan Puskesmas.',
     folders: [
-      { emoji:'📋', title:'Perencanaan', desc:'RUK, RPK, RKA, dan dokumen perencanaan tahunan.',          tag:'RUK · RPK · RKA',   url:'https://drive.google.com/drive/folders/ID_K1_PERENCANAAN' },
-      { emoji:'👥', title:'Kepegawaian', desc:'Data pegawai, SKP, absensi, dan dokumen SDM.',              tag:'SKP · Absensi',      url:'https://drive.google.com/drive/folders/ID_K1_KEPEGAWAIAN' },
-      { emoji:'💰', title:'Keuangan & Anggaran', desc:'BOK, JKN, laporan keuangan, dan SPJ.',             tag:'BOK · JKN · SPJ',    url:'https://drive.google.com/drive/folders/ID_K1_KEUANGAN' },
-      { emoji:'⭐', title:'Mutu & Akreditasi', desc:'Dokumen mutu, standar prosedur, dan akreditasi.',    tag:'SOP · Akreditasi',   url:'https://drive.google.com/drive/folders/ID_K1_MUTU' },
-      { emoji:'🏗️', title:'Sarana & Prasarana', desc:'Inventaris, pemeliharaan, dan aset Puskesmas.',     tag:'Inventaris · Aset',  url:'https://drive.google.com/drive/folders/ID_K1_SARPRAS' },
-      { emoji:'📊', title:'Laporan Tahunan', desc:'Profil Puskesmas dan laporan kinerja tahunan.',         tag:'Profil · Kinerja',   url:'https://drive.google.com/drive/folders/ID_K1_LAPORAN' },
+      { slug:'KUNJUNGAN',    emoji:'🚪', title:'Kunjungan Pasien',       desc:'Data kunjungan pasien harian dan rekapitulasi bulanan.',       tag:'Harian · Bulanan' },
+      { slug:'LAP_EKSEKUTIF',emoji:'📈', title:'Laporan Eksekutif',       desc:'Laporan ringkas kinerja untuk pimpinan dan Dinkes.',           tag:'Pimpinan · Dinkes' },
+      { slug:'SP2TP',        emoji:'📊', title:'SP2TP',                   desc:'Sistem Pencatatan dan Pelaporan Terpadu Puskesmas.',           tag:'LB · LT' },
+      { slug:'ARSIP_SURAT',  emoji:'📬', title:'Manajemen Arsip Surat',   desc:'Pengelolaan surat masuk, surat keluar, dan disposisi.',        tag:'Masuk · Keluar · Disposisi' },
+      { slug:'KEUANGAN',     emoji:'💰', title:'Keuangan',                desc:'BOK, JKN, SPJ, dan laporan keuangan operasional.',             tag:'BOK · JKN · SPJ' },
+      { slug:'SDM',          emoji:'👥', title:'SDM',                     desc:'Data pegawai, SKP, absensi, dan dokumen kepegawaian.',         tag:'SKP · Absensi · Pegawai' },
+      { slug:'BLUD',         emoji:'🏛️', title:'BLUD',                    desc:'Dokumen Badan Layanan Umum Daerah, RBA, dan pelaporan BLUD.',  tag:'RBA · Tarif · BLUD' },
+      { slug:'RME',          emoji:'💻', title:'RME',                     desc:'Rekam Medis Elektronik dan dokumentasi terkait.',              tag:'e-RM · Digital' },
+      { slug:'SPM',          emoji:'✅', title:'SPM',                     desc:'Standar Pelayanan Minimal bidang kesehatan dan capaiannya.',    tag:'Indikator · Capaian' },
+      { slug:'KIR',          emoji:'🩺', title:'KIR Umum',                desc:'Surat Keterangan Sehat (KIR) untuk keperluan umum.',           tag:'Sehat · Umum' },
+      { slug:'CATEN',        emoji:'💑', title:'Caten',                   desc:'Pelayanan dan dokumen kesehatan calon pengantin.',             tag:'Catin · Pranikah' },
+      { slug:'KET_BEROBAT',  emoji:'📋', title:'Keterangan Berobat',      desc:'Surat keterangan berobat dan dokumen rujukan pasien.',         tag:'Surat · Rujukan' },
     ]
   },
   k2: {
-    id: 'k2', emoji: '🤱', label: 'Klaster 2', color: 'var(--blue)',
-    icBg: 'rgba(96,165,250,0.12)', icBorder: 'rgba(96,165,250,0.25)', icShadow: 'rgba(96,165,250,0.18)',
-    title: 'Ibu, Anak, KB & Gizi',
-    desc: 'Dokumen pelayanan kesehatan ibu, bayi, balita, keluarga berencana, dan gizi masyarakat.',
+    id:'k2', emoji:'🤱', label:'Klaster 2', color:'var(--blue)',
+    icBg:'rgba(96,165,250,0.12)', icBorder:'rgba(96,165,250,0.25)', icShadow:'rgba(96,165,250,0.18)',
+    title:'Ibu, Anak, KB & Gizi',
+    desc:'Dokumen pelayanan kesehatan ibu, bayi, balita, keluarga berencana, dan gizi masyarakat.',
     folders: [
-      { emoji:'🤰', title:'Kesehatan Ibu',      desc:'ANC, persalinan, nifas, dan laporan KIA bulanan.',         tag:'ANC · KIA · Nifas',     url:'https://drive.google.com/drive/folders/ID_K2_IBU' },
-      { emoji:'👶', title:'Kesehatan Anak',      desc:'MTBS, tumbuh kembang, DDTK bayi dan balita.',             tag:'MTBS · DDTK',           url:'https://drive.google.com/drive/folders/ID_K2_ANAK' },
-      { emoji:'💊', title:'Keluarga Berencana',  desc:'Laporan KB, akseptor, dan pencapaian program.',           tag:'Akseptor · KB',         url:'https://drive.google.com/drive/folders/ID_K2_KB' },
-      { emoji:'💉', title:'Imunisasi',           desc:'Laporan imunisasi rutin, BIAS, dan cakupan UCI.',         tag:'UCI · BIAS',            url:'https://drive.google.com/drive/folders/ID_K2_IMUNISASI' },
-      { emoji:'🥗', title:'Gizi Masyarakat',     desc:'Laporan gizi balita, bumil KEK, stunting, dan PMT.',      tag:'Stunting · PMT',        url:'https://drive.google.com/drive/folders/ID_K2_GIZI' },
+      { slug:'IBU',        emoji:'🤰', title:'Kesehatan Ibu',         desc:'ANC, persalinan, nifas, dan laporan KIA bulanan.',    tag:'ANC · KIA · Nifas' },
+      { slug:'ANAK',       emoji:'👶', title:'Kesehatan Anak',         desc:'MTBS, tumbuh kembang, DDTK bayi dan balita.',         tag:'MTBS · DDTK' },
+      { slug:'KB',         emoji:'💊', title:'Keluarga Berencana',     desc:'Laporan KB, akseptor, dan pencapaian program.',       tag:'Akseptor · KB' },
+      { slug:'IMUNISASI',  emoji:'💉', title:'Imunisasi',              desc:'Laporan imunisasi rutin, BIAS, dan cakupan UCI.',     tag:'UCI · BIAS' },
+      { slug:'GIZI',       emoji:'🥗', title:'Gizi Masyarakat',        desc:'Laporan gizi balita, bumil KEK, stunting, dan PMT.',  tag:'Stunting · PMT' },
     ]
   },
   k3: {
-    id: 'k3', emoji: '🦠', label: 'Klaster 3', color: 'var(--coral)',
-    icBg: 'rgba(251,113,133,0.12)', icBorder: 'rgba(251,113,133,0.25)', icShadow: 'rgba(251,113,133,0.18)',
-    title: 'Pencegahan & Pengendalian Penyakit',
-    desc: 'Surveilans epidemiologi, pengendalian penyakit menular dan tidak menular, serta kesehatan lingkungan.',
+    id:'k3', emoji:'🦠', label:'Klaster 3', color:'var(--coral)',
+    icBg:'rgba(251,113,133,0.12)', icBorder:'rgba(251,113,133,0.25)', icShadow:'rgba(251,113,133,0.18)',
+    title:'Pencegahan & Pengendalian Penyakit',
+    desc:'Surveilans epidemiologi, pengendalian penyakit menular dan tidak menular, serta kesehatan lingkungan.',
     folders: [
-      { emoji:'🔬', title:'Surveilans & Epidemiologi', desc:'Laporan W2, KLB, dan data epidemiologi mingguan.',   tag:'W2 · KLB · Epid',  url:'https://drive.google.com/drive/folders/ID_K3_SURVEILANS' },
-      { emoji:'🫁', title:'P2M — Penyakit Menular',    desc:'TB, HIV, DBD, malaria, pneumonia, dan diare.',       tag:'TB · HIV · DBD',    url:'https://drive.google.com/drive/folders/ID_K3_P2M' },
-      { emoji:'🫀', title:'PTM — Penyakit Tidak Menular', desc:'Hipertensi, DM, kanker, dan posbindu.',          tag:'HTN · DM · PTM',   url:'https://drive.google.com/drive/folders/ID_K3_PTM' },
-      { emoji:'🌿', title:'Kesehatan Lingkungan',      desc:'Sanitasi, air bersih, TTU, TPM, dan STBM.',          tag:'Sanitasi · STBM',  url:'https://drive.google.com/drive/folders/ID_K3_KESLING' },
-      { emoji:'🧴', title:'Kesehatan Kerja & Olahraga', desc:'Dokumen kesehatan kerja, K3, dan kebugaran.',       tag:'K3 · Kebugaran',   url:'https://drive.google.com/drive/folders/ID_K3_KESOR' },
+      { slug:'SURVEILANS', emoji:'🔬', title:'Surveilans & Epidemiologi',    desc:'Laporan W2, KLB, dan data epidemiologi mingguan.',  tag:'W2 · KLB · Epid' },
+      { slug:'P2M',        emoji:'🫁', title:'P2M — Penyakit Menular',        desc:'TB, HIV, DBD, malaria, pneumonia, dan diare.',     tag:'TB · HIV · DBD' },
+      { slug:'PTM',        emoji:'🫀', title:'PTM — Tidak Menular',           desc:'Hipertensi, DM, kanker, dan posbindu.',            tag:'HTN · DM · PTM' },
+      { slug:'KESLING',    emoji:'🌿', title:'Kesehatan Lingkungan',          desc:'Sanitasi, air bersih, TTU, TPM, dan STBM.',        tag:'Sanitasi · STBM' },
+      { slug:'KESOR',      emoji:'🧴', title:'Kesehatan Kerja & Olahraga',    desc:'Dokumen kesehatan kerja, K3, dan kebugaran.',      tag:'K3 · Kebugaran' },
     ]
   },
   k4: {
-    id: 'k4', emoji: '👴', label: 'Klaster 4', color: 'var(--purple)',
-    icBg: 'rgba(167,139,250,0.12)', icBorder: 'rgba(167,139,250,0.25)', icShadow: 'rgba(167,139,250,0.18)',
-    title: 'Usia & Kondisi Khusus',
-    desc: 'Dokumen pelayanan kelompok rentan — lansia, penyandang disabilitas, kesehatan jiwa, dan kondisi kronis.',
+    id:'k4', emoji:'👴', label:'Klaster 4', color:'var(--purple)',
+    icBg:'rgba(167,139,250,0.12)', icBorder:'rgba(167,139,250,0.25)', icShadow:'rgba(167,139,250,0.18)',
+    title:'Usia & Kondisi Khusus',
+    desc:'Dokumen pelayanan kelompok rentan — lansia, penyandang disabilitas, kesehatan jiwa, dan kondisi kronis.',
     folders: [
-      { emoji:'👵', title:'Kesehatan Lansia',     desc:'Posyandu lansia, skrining, dan laporan pelayanan.',       tag:'Posyandu Lansia',   url:'https://drive.google.com/drive/folders/ID_K4_LANSIA' },
-      { emoji:'🧠', title:'Kesehatan Jiwa',       desc:'ODGJ, napza, dan laporan kesehatan jiwa masyarakat.',    tag:'ODGJ · Napza',      url:'https://drive.google.com/drive/folders/ID_K4_JIWA' },
-      { emoji:'♿', title:'Disabilitas',           desc:'Pendataan, pelayanan, dan dokumen disabilitas.',         tag:'Inklusi · Difabel', url:'https://drive.google.com/drive/folders/ID_K4_DISABILITAS' },
-      { emoji:'🏫', title:'Kesehatan Sekolah (UKS)', desc:'UKS, PKPR, dan kesehatan remaja.',                    tag:'UKS · PKPR',        url:'https://drive.google.com/drive/folders/ID_K4_UKS' },
-      { emoji:'🦷', title:'Kesehatan Gigi & Mulut', desc:'UKGM, UKGS, dan laporan pelayanan gigi.',              tag:'UKGM · UKGS',       url:'https://drive.google.com/drive/folders/ID_K4_GIGI' },
+      { slug:'LANSIA',     emoji:'👵', title:'Kesehatan Lansia',         desc:'Posyandu lansia, skrining, dan laporan pelayanan.',  tag:'Posyandu Lansia' },
+      { slug:'JIWA',       emoji:'🧠', title:'Kesehatan Jiwa',           desc:'ODGJ, napza, dan laporan kesehatan jiwa masyarakat.',tag:'ODGJ · Napza' },
+      { slug:'DISABILITAS',emoji:'♿', title:'Disabilitas',              desc:'Pendataan, pelayanan, dan dokumen disabilitas.',      tag:'Inklusi · Difabel' },
+      { slug:'UKS',        emoji:'🏫', title:'Kesehatan Sekolah (UKS)',  desc:'UKS, PKPR, dan kesehatan remaja.',                    tag:'UKS · PKPR' },
+      { slug:'GIGI',       emoji:'🦷', title:'Kesehatan Gigi & Mulut',   desc:'UKGM, UKGS, dan laporan pelayanan gigi.',             tag:'UKGM · UKGS' },
     ]
   },
   lk: {
-    id: 'lk', emoji: '🔗', label: 'Lintas Klaster', color: 'var(--gold)',
-    icBg: 'rgba(251,191,36,0.12)', icBorder: 'rgba(251,191,36,0.25)', icShadow: 'rgba(251,191,36,0.18)',
-    title: 'Dokumen Lintas Program',
-    desc: 'Arsip administrasi umum, promosi kesehatan, dan dokumen yang mencakup lebih dari satu klaster.',
+    id:'lk', emoji:'🔗', label:'Lintas Klaster', color:'var(--gold)',
+    icBg:'rgba(251,191,36,0.12)', icBorder:'rgba(251,191,36,0.25)', icShadow:'rgba(251,191,36,0.18)',
+    title:'Dokumen Lintas Program',
+    desc:'Arsip administrasi umum, promosi kesehatan, dan dokumen yang mencakup lebih dari satu klaster.',
     folders: [
-      { emoji:'📢', title:'Promosi Kesehatan',         desc:'Materi KIE, penyuluhan, dan media promkes.',            tag:'KIE · Promkes',       url:'https://drive.google.com/drive/folders/ID_LK_PROMKES' },
-      { emoji:'🏘️', title:'Pemberdayaan Masyarakat',   desc:'SMD, MMD, desa siaga, dan laporan UKBM.',              tag:'SMD · MMD · UKBM',    url:'https://drive.google.com/drive/folders/ID_LK_PEMBERDAYAAN' },
-      { emoji:'🏪', title:'UKBM (Posyandu dll)',        desc:'Posyandu, posbindu, poskestren, dan laporan UKBM.',    tag:'Posyandu · Poskestren',url:'https://drive.google.com/drive/folders/ID_LK_UKBM' },
-      { emoji:'📬', title:'Surat Menyurat',             desc:'Surat masuk, surat keluar, dan disposisi.',            tag:'Arsip Surat',          url:'https://drive.google.com/drive/folders/ID_LK_SURAT' },
-      { emoji:'📁', title:'Administrasi Umum',          desc:'Notulen rapat, SK, dan dokumen administrasi lainnya.', tag:'SK · Notulen',         url:'https://drive.google.com/drive/folders/ID_LK_ADMIN' },
+      { slug:'PROMKES',      emoji:'📢', title:'Promosi Kesehatan',         desc:'Materi KIE, penyuluhan, dan media promkes.',           tag:'KIE · Promkes' },
+      { slug:'PEMBERDAYAAN', emoji:'🏘️', title:'Pemberdayaan Masyarakat',   desc:'SMD, MMD, desa siaga, dan laporan UKBM.',              tag:'SMD · MMD · UKBM' },
+      { slug:'UKBM',         emoji:'🏪', title:'UKBM (Posyandu dll)',        desc:'Posyandu, posbindu, poskestren, dan laporan UKBM.',    tag:'Posyandu · Poskestren' },
+      { slug:'SURAT',        emoji:'📬', title:'Surat Menyurat',             desc:'Surat masuk, surat keluar, dan disposisi.',            tag:'Arsip Surat' },
+      { slug:'ADMIN',        emoji:'📁', title:'Administrasi Umum',          desc:'Notulen rapat, SK, dan dokumen administrasi lainnya.',tag:'SK · Notulen' },
     ]
   }
 };
 
 /* ═══════════════════════════════════════════
-   ROUTING
+   TABEL URL — Struktur: Tahun > Klaster > Bulan > Sub-folder
+   Format key: 'TAHUN_KLASTER_BULAN_SUBFOLDER'
+   Contoh: '2026_K1_MEI_PERENCANAAN'
+   
+   Tinggal isi URL Drive sesuai pola di bawah.
+   Bisa juga buat fungsi generator atau hardcode satu per satu.
 ═══════════════════════════════════════════ */
+const URL_DRIVE = {
+  // Contoh format — semua kombinasi otomatis di-generate jika tidak diisi manual:
+  // '2026_K1_MEI_PERENCANAAN': 'https://drive.google.com/drive/folders/1abc...',
+  // '2026_K1_MEI_KEPEGAWAIAN': 'https://drive.google.com/drive/folders/1def...',
+};
+
+/* Fungsi resolver URL: cek tabel di atas, kalau kosong → fallback ke placeholder */
+function getDriveUrl(tahun, klasterId, bulanIdx, subfolderSlug) {
+  const key = `${tahun}_${SLUG_KLASTER[klasterId]}_${SLUG_BULAN[bulanIdx]}_${subfolderSlug}`;
+  return URL_DRIVE[key] || `ID_${key}`;
+}
+
+/* ═══════════════════════════════════════════
+   STATE
+═══════════════════════════════════════════ */
+let state = {
+  klasterAktif: null,
+  tahun: TAHUN_AKTIF,
+  bulan: new Date().getMonth(),  // 0-11
+};
+
+/* ROUTING */
 function goHome() {
   document.getElementById('page-home').classList.add('active');
   document.getElementById('page-klaster').classList.remove('active');
-  renderBreadcrumb([]);
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  renderBC([]);
+  window.scrollTo({top:0, behavior:'smooth'});
 }
 
 function goKlaster(id) {
-  const data = KLASTER_DATA[id];
-  if (!data) return;
-  renderKlasterPage(data);
+  const d = KLASTER_DATA[id]; if (!d) return;
+  state.klasterAktif = id;
+  renderKlasterPage();
   document.getElementById('page-home').classList.remove('active');
   document.getElementById('page-klaster').classList.add('active');
-  renderBreadcrumb([{ label: data.title, id }]);
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  renderBC([{label: d.title, id}]);
+  window.scrollTo({top:0, behavior:'smooth'});
 }
 
-function openDrive(url, e) {
+function openSubfolder(subfolderSlug, namaTopik, e) {
   e.stopPropagation();
-  if (url.includes('ID_')) {
-    alert('URL Google Drive belum dikonfigurasi.\nGanti URL di bagian KLASTER_DATA pada script.');
+  const url = getDriveUrl(state.tahun, state.klasterAktif, state.bulan, subfolderSlug);
+  if (url.startsWith('ID_')) {
+    alert(`Folder belum tersedia.\n\nPeriode: ${NAMA_BULAN[state.bulan]} ${state.tahun}\nKlaster: ${KLASTER_DATA[state.klasterAktif].label}\nTopik: ${namaTopik}\n\nGanti URL pada bagian URL_DRIVE di script dengan key:\n${url.replace('ID_','')}`);
     return;
   }
   window.open(url, '_blank');
 }
 
-/* ═══════════════════════════════════════════
-   RENDER KLASTER PAGE
-═══════════════════════════════════════════ */
-function renderKlasterPage(data) {
-  const folders = data.folders.map((f, i) => `
-    <div class="sfcard" style="--ic-bg:${data.icBg};--ic-border:${data.icBorder};--ic-shadow:${data.icShadow};--c:${data.color};animation-delay:${i*0.06+0.05}s;"
-         onclick="openDrive('${f.url}', event)">
+/* RENDER */
+function renderKlasterPage() {
+  const d = KLASTER_DATA[state.klasterAktif];
+
+  const subfolders = d.folders.map(f => `
+    <div class="sfcard" style="--ic-bg:${d.icBg};--ic-border:${d.icBorder};--c:${d.color};"
+         onclick="openSubfolder('${f.slug}', '${f.title}', event)">
       <div class="sf-icon">${f.emoji}</div>
       <div class="sf-body">
         <div class="sf-title">${f.title}</div>
@@ -683,34 +740,102 @@ function renderKlasterPage(data) {
   document.getElementById('page-klaster').innerHTML = `
     <div class="klaster-page">
       <div class="kp-header">
-        <div class="kp-icon-big" style="--ic-bg:${data.icBg};--ic-border:${data.icBorder};--ic-shadow:${data.icShadow};">${data.emoji}</div>
+        <div class="kp-icon-big" style="--ic-bg:${d.icBg};--ic-border:${d.icBorder};--ic-shadow:${d.icShadow};">${d.emoji}</div>
         <div class="kp-meta">
-          <span class="kp-badge" style="--c:${data.color}">${data.label}</span>
-          <h2 class="kp-title">${data.title}</h2>
-          <p class="kp-desc">${data.desc}</p>
+          <span class="kp-badge" style="--c:${d.color}">${d.label}</span>
+          <h2 class="kp-title">${d.title}</h2>
+          <p class="kp-desc">${d.desc}</p>
         </div>
       </div>
+
+      <!-- PERIOD SELECTOR -->
+      <div class="period-bar">
+        <div class="period-label">
+          <span class="period-label-icon">📅</span>
+          <span>Periode Arsip</span>
+        </div>
+
+        <!-- Dropdown Tahun -->
+        <div class="dropdown-wrap">
+          <div class="dropdown-trigger" id="dd-tahun-trigger" onclick="toggleDropdown('tahun')">
+            <span class="dt-text" id="dd-tahun-text">${state.tahun}</span>
+            <svg class="dt-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="dropdown-menu" id="dd-tahun-menu">
+            ${TAHUN_TERSEDIA.map(y => `
+              <div class="dropdown-option ${y===state.tahun?'selected':''}" onclick="selectTahun(${y})">${y}</div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- Dropdown Bulan -->
+        <div class="dropdown-wrap">
+          <div class="dropdown-trigger" id="dd-bulan-trigger" onclick="toggleDropdown('bulan')">
+            <span class="dt-text" id="dd-bulan-text">${NAMA_BULAN[state.bulan]}</span>
+            <svg class="dt-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="dropdown-menu" id="dd-bulan-menu">
+            ${NAMA_BULAN.map((m,i) => `
+              <div class="dropdown-option ${i===state.bulan?'selected':''}" onclick="selectBulan(${i})">${m}</div>
+            `).join('')}
+          </div>
+        </div>
+
+        <div class="period-summary">
+          Menampilkan arsip <strong>${NAMA_BULAN[state.bulan]} ${state.tahun}</strong>
+        </div>
+      </div>
+
       <div class="sec-hdr"><span class="sec-tag">Sub-Folder Dokumen</span><div class="sec-rule"></div></div>
-      <div class="subfolder-grid">${folders}</div>
+      <div class="subfolder-grid">${subfolders}</div>
     </div>
   `;
 }
 
-/* ═══════════════════════════════════════════
-   BREADCRUMB
-═══════════════════════════════════════════ */
-function renderBreadcrumb(trail) {
+function toggleDropdown(which) {
+  const triggers = ['tahun','bulan'];
+  triggers.forEach(t => {
+    const trig = document.getElementById('dd-'+t+'-trigger');
+    const menu = document.getElementById('dd-'+t+'-menu');
+    if (t === which) {
+      const isOpen = trig.classList.contains('open');
+      trig.classList.toggle('open');
+      menu.classList.toggle('open');
+      if (isOpen) return;
+    } else {
+      trig.classList.remove('open');
+      menu.classList.remove('open');
+    }
+  });
+}
+
+function selectTahun(y) {
+  state.tahun = y;
+  renderKlasterPage();
+}
+function selectBulan(i) {
+  state.bulan = i;
+  renderKlasterPage();
+}
+
+/* Tutup dropdown saat klik di luar */
+document.addEventListener('click', e => {
+  if (!e.target.closest('.dropdown-wrap')) {
+    document.querySelectorAll('.dropdown-trigger.open, .dropdown-menu.open').forEach(el => el.classList.remove('open'));
+  }
+});
+
+function renderBC(trail) {
   const bc = document.getElementById('breadcrumb');
-  if (trail.length === 0) { bc.innerHTML = ''; return; }
+  if (!trail.length) { bc.innerHTML = ''; return; }
   let html = `<span class="bc-sep">›</span><span class="bc-item" onclick="goHome()">Beranda</span>`;
-  trail.forEach((item, i) => {
-    html += `<span class="bc-sep">›</span>`;
-    html += `<span class="bc-item active">${item.label}</span>`;
+  trail.forEach(item => {
+    html += `<span class="bc-sep">›</span><span class="bc-item active">${item.label}</span>`;
   });
   bc.innerHTML = html;
 }
 
-/* ── Parallax orbs ── */
+/* Parallax */
 let tk = false;
 document.addEventListener('mousemove', e => {
   if (!tk) {
