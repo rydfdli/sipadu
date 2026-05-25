@@ -416,9 +416,12 @@ footer {
   .klaster-page{padding:32px 18px 60px;}
   .subfolder-grid{grid-template-columns:1fr;}
   .kp-header{flex-direction:column;gap:14px;}
-  .period-bar{flex-direction:column;align-items:stretch;}
-  .period-summary{margin-left:0;}
-  .dropdown-trigger{width:100%;}
+
+  .period-bar { gap: 10px; }
+  .period-label { flex-basis: 100%; }
+  .dropdown-wrap { flex: 1 1 calc(50% - 5px); min-width: 0; }
+  .dropdown-trigger { width: 100%; min-width: 0; }
+  .period-summary { flex-basis: 100%; margin-left: 0; }
 }
 </style>
 </head>
@@ -439,14 +442,14 @@ footer {
   <div class="topbar-right"><span class="pulse-dot"></span>Sistem Aktif</div>
 </nav>
 
-<!-- HOME ->
+<!-- HOME -->
 <div class="page active" id="page-home">
   <div class="home-hero">
     <div class="hero-copy">
-      <div class="eyebrow"><span class="ey-line"></span><span class="ey-text">Aktualisasi CPNS · Latsar 2026</span></div>
+      <div class="eyebrow"><span class="ey-line"></span><span class="ey-text">Aktualisasi CPNS · Latsar 2025</span></div>
       <h1 class="hero-h1"><em>SIPADU</em></h1>
       <p class="hero-akronim">Sistem Informasi Pengelolaan<br/>Arsip dan Dokumen Umum</p>
-      <p class="hero-sub">Portal ini merupakan media optimalisasi kegiatan aktualisasi dan habituasi Pelatihan Dasar CPNS dalam rangka optimalisasi pengelolaan data laporan dan administrasi UPT Puskesmas Sapala secara terpusat, terstruktur, dan berbasis digital.</p>
+      <p class="hero-sub">Portal ini merupakan luaran aktualisasi Pelatihan Dasar CPNS dalam rangka optimalisasi pengelolaan data laporan dan administrasi Puskesmas secara terpusat, terstruktur, dan berbasis digital.</p>
       <div class="hero-stats">
         <div class="st-item"><div class="st-n">KMK</div><div class="st-l">Dasar Struktur</div></div>
         <div class="st-item"><div class="st-n">BerAKHLAK</div><div class="st-l">Nilai Dasar</div></div>
@@ -530,7 +533,7 @@ footer {
         <div class="gc-top"><div class="gc-icon">🗂️</div><span class="gc-badge" style="--c:var(--teal)">Klaster 1</span></div>
         <div class="gc-title">Manajemen Puskesmas</div>
         <div class="gc-desc">Kunjungan pasien, keuangan, SDM, BLUD, RME, SPM, dan pelayanan administratif lainnya.</div>
-        <div class="gc-footer"><span class="gc-sub">12 sub-folder</span><div class="gc-arrow" style="--c:var(--teal);--c-glow:rgba(45,212,191,0.4)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
+        <div class="gc-footer"><span class="gc-sub">10 sub-folder</span><div class="gc-arrow" style="--c:var(--teal);--c-glow:rgba(45,212,191,0.4)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
       </div>
       <div class="gcard" style="--c:var(--blue);--glow:radial-gradient(circle at 50% 0%,rgba(96,165,250,0.13),transparent 65%);--ic-bg:rgba(96,165,250,0.12);--ic-border:rgba(96,165,250,0.25);--ic-shadow:rgba(96,165,250,0.18);" onclick="goKlaster('k2')">
         <div class="gc-top"><div class="gc-icon">🤱</div><span class="gc-badge" style="--c:var(--blue)">Klaster 2</span></div>
@@ -565,8 +568,8 @@ footer {
 <div class="page" id="page-klaster"></div>
 
 <footer>
-  <div class="ft-l"><strong>SIPADU</strong> — Sistem Informasi Pengelolaan Arsip dan Dokumen Umum<br/>Puskesmas · Aktualisasi Pelatihan Dasar CPNS 2026</div>
-  <div class="ft-r">Penata Kelola Sistem dan Teknologi Informasi · Riyadi Fadli, S.Kom</div>
+  <div class="ft-l"><strong>SIPADU</strong> — Sistem Informasi Pengelolaan Arsip dan Dokumen Umum<br/>Puskesmas · Aktualisasi Pelatihan Dasar CPNS 2025</div>
+  <div class="ft-r">Pengelola Sistem Informasi · Sub-Bagian Tata Usaha</div>
 </footer>
 
 <script>
@@ -590,7 +593,6 @@ const KLASTER_DATA = {
     title:'Manajemen Puskesmas',
     desc:'Seluruh dokumen manajemen, pelayanan administratif, keuangan, kepegawaian, dan pelaporan Puskesmas.',
     folders: [
-<<<<<<< HEAD
       { slug:'KUNJUNGAN',    emoji:'🚪', title:'Kunjungan Pasien',       desc:'Data kunjungan pasien harian dan rekapitulasi bulanan.',       tag:'Harian · Bulanan' },
       { slug:'LAP_EKSEKUTIF',emoji:'📈', title:'Laporan Eksekutif',       desc:'Laporan ringkas kinerja untuk pimpinan dan Dinkes.',           tag:'Pimpinan · Dinkes' },
       { slug:'SP2TP',        emoji:'📊', title:'SP2TP',                   desc:'Sistem Pencatatan dan Pelaporan Terpadu Puskesmas.',           tag:'LB · LT' },
@@ -600,17 +602,7 @@ const KLASTER_DATA = {
       { slug:'BLUD',         emoji:'🏛️', title:'BLUD',                    desc:'Dokumen Badan Layanan Umum Daerah, RBA, dan pelaporan BLUD.',  tag:'RBA · Tarif · BLUD' },
       { slug:'RME',          emoji:'💻', title:'RME',                     desc:'Rekam Medis Elektronik dan dokumentasi terkait.',              tag:'e-RM · Digital' },
       { slug:'SPM',          emoji:'✅', title:'SPM',                     desc:'Standar Pelayanan Minimal bidang kesehatan dan capaiannya.',    tag:'Indikator · Capaian' },
-      { slug:'KIR',          emoji:'🩺', title:'KIR Umum',                desc:'Surat Keterangan Sehat (KIR) untuk keperluan umum.',           tag:'Sehat · Umum' },
-      { slug:'CATEN',        emoji:'💑', title:'Caten',                   desc:'Pelayanan dan dokumen kesehatan calon pengantin.',             tag:'Catin · Pranikah' },
-      { slug:'KET_BEROBAT',  emoji:'📋', title:'Keterangan Berobat',      desc:'Surat keterangan berobat dan dokumen rujukan pasien.',         tag:'Surat · Rujukan' },
-=======
-      { emoji:'📋', title:'Perencanaan', desc:'RUK, RPK, RKA, dan dokumen perencanaan tahunan.',          tag:'RUK · RPK · RKA',   url:'https://drive.google.com/drive/folders/ID_K1_PERENCANAAN' },
-      { emoji:'👥', title:'Kepegawaian', desc:'Data pegawai, SKP, absensi, dan dokumen SDM.',              tag:'SKP · Absensi',      url:'https://srv1598234.hstgr.cloud/s/KJECd4FH3pAMSxB' },
-      { emoji:'💰', title:'Keuangan & Anggaran', desc:'BOK, JKN, laporan keuangan, dan SPJ.',             tag:'BOK · JKN · SPJ',    url:'https://drive.google.com/drive/folders/ID_K1_KEUANGAN' },
-      { emoji:'⭐', title:'Mutu & Akreditasi', desc:'Dokumen mutu, standar prosedur, dan akreditasi.',    tag:'SOP · Akreditasi',   url:'https://drive.google.com/drive/folders/ID_K1_MUTU' },
-      { emoji:'🏗️', title:'Sarana & Prasarana', desc:'Inventaris, pemeliharaan, dan aset Puskesmas.',     tag:'Inventaris · Aset',  url:'https://drive.google.com/drive/folders/ID_K1_SARPRAS' },
-      { emoji:'📊', title:'Laporan Tahunan', desc:'Profil Puskesmas dan laporan kinerja tahunan.',         tag:'Profil · Kinerja',   url:'https://drive.google.com/drive/folders/ID_K1_LAPORAN' },
->>>>>>> 358efa2399f224359e7e06ec5aac8c8b2be4f8b4
+      { slug:'SURAT_KET',    emoji:'📋', title:'Surat Keterangan',         desc:'KIR Umum, Caten, dan keterangan berobat dalam satu folder.',    tag:'KIR · Caten · Berobat' },
     ]
   },
   k2: {
@@ -676,9 +668,20 @@ const KLASTER_DATA = {
    Bisa juga buat fungsi generator atau hardcode satu per satu.
 ═══════════════════════════════════════════ */
 const URL_DRIVE = {
-  // Contoh format — semua kombinasi otomatis di-generate jika tidak diisi manual:
-  // '2026_K1_MEI_PERENCANAAN': 'https://drive.google.com/drive/folders/1abc...',
-  // '2026_K1_MEI_KEPEGAWAIAN': 'https://drive.google.com/drive/folders/1def...',
+  '2026_K1_JAN_KUNJUNGAN': 'https://srv1598234.hstgr.cloud/s/xSd78QaZa6WrG2b',
+  '2026_K1_JAN_LAP_EKSEKUTIF': 'https://srv1598234.hstgr.cloud/s/tYYnN6eDWbHCsPE',
+  '2026_K1_JAN_SP2TP': 'https://srv1598234.hstgr.cloud/s/wQ5wpw58RA6wAx6',
+  '2026_K1_JAN_SPM': 'https://srv1598234.hstgr.cloud/s/mW84RZkiDDKbNZR',
+  '2026_K1_JAN_SDM': 'https://srv1598234.hstgr.cloud/s/xWKTecpQkJSGkrZ',
+  '2026_K1_JAN_RME': 'https://srv1598234.hstgr.cloud/s/geF2o8HJS8C35fa',
+  '2026_K1_JAN_SURAT_KET': 'https://srv1598234.hstgr.cloud/s/eqFoRxSZMMTPnH9',
+
+  '2026_K1_FEB_KUNJUNGAN': 'https://srv1598234.hstgr.cloud/s/2tBJYJQDQS3F8PD',
+  '2026_K1_FEB_LAP_EKSEKUTIF': 'https://srv1598234.hstgr.cloud/s/3756DEJa6msaN7F',
+  '2026_K1_FEB_SP2TP': 'https://srv1598234.hstgr.cloud/s/YQHPCJrRMLdjCMz',
+  '2026_K1_FEB_SDM': 'https://srv1598234.hstgr.cloud/s/GxCqLFiDfZr9dGd',          
+  '2026_K1_FEB_RME': 'https://srv1598234.hstgr.cloud/s/2tBJYJQDQS3F8PD',
+  '2026_K1_FEB_SURAT_KET': 'https://srv1598234.hstgr.cloud/s/arJg29EQCNWYfNm',
 };
 
 /* Fungsi resolver URL: cek tabel di atas, kalau kosong → fallback ke placeholder */
@@ -746,6 +749,20 @@ function renderKlasterPage() {
     </div>
   `).join('');
 
+  // Bangun opsi dropdown TERPISAH (hindari nested template literal)
+  let tahunOpts = '';
+  for (let i = 0; i < TAHUN_TERSEDIA.length; i++) {
+    const y = TAHUN_TERSEDIA[i];
+    const sel = (y === state.tahun) ? ' selected' : '';
+    tahunOpts += '<div class="dropdown-option' + sel + '" onclick="selectTahun(' + y + ')">' + y + '</div>';
+  }
+
+  let bulanOpts = '';
+  for (let i = 0; i < NAMA_BULAN.length; i++) {
+    const sel = (i === state.bulan) ? ' selected' : '';
+    bulanOpts += '<div class="dropdown-option' + sel + '" onclick="selectBulan(' + i + ')">' + NAMA_BULAN[i] + '</div>';
+  }
+
   document.getElementById('page-klaster').innerHTML = `
     <div class="klaster-page">
       <div class="kp-header">
@@ -770,11 +787,7 @@ function renderKlasterPage() {
             <span class="dt-text" id="dd-tahun-text">${state.tahun}</span>
             <svg class="dt-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
           </div>
-          <div class="dropdown-menu" id="dd-tahun-menu">
-            ${TAHUN_TERSEDIA.map(y => `
-              <div class="dropdown-option ${y===state.tahun?'selected':''}" onclick="selectTahun(${y})">${y}</div>
-            `).join('')}
-          </div>
+          <div class="dropdown-menu" id="dd-tahun-menu">${tahunOpts}</div>
         </div>
 
         <!-- Dropdown Bulan -->
@@ -783,11 +796,7 @@ function renderKlasterPage() {
             <span class="dt-text" id="dd-bulan-text">${NAMA_BULAN[state.bulan]}</span>
             <svg class="dt-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
           </div>
-          <div class="dropdown-menu" id="dd-bulan-menu">
-            ${NAMA_BULAN.map((m,i) => `
-              <div class="dropdown-option ${i===state.bulan?'selected':''}" onclick="selectBulan(${i})">${m}</div>
-            `).join('')}
-          </div>
+          <div class="dropdown-menu" id="dd-bulan-menu">${bulanOpts}</div>
         </div>
 
         <div class="period-summary">
