@@ -446,10 +446,10 @@ footer {
 <div class="page active" id="page-home">
   <div class="home-hero">
     <div class="hero-copy">
-      <div class="eyebrow"><span class="ey-line"></span><span class="ey-text">Aktualisasi CPNS · Latsar 2025</span></div>
+      <div class="eyebrow"><span class="ey-line"></span><span class="ey-text">Aktualisasi CPNS · Latsar 2026</span></div>
       <h1 class="hero-h1"><em>SIPADU</em></h1>
       <p class="hero-akronim">Sistem Informasi Pengelolaan<br/>Arsip dan Dokumen Umum</p>
-      <p class="hero-sub">Portal ini merupakan luaran aktualisasi Pelatihan Dasar CPNS dalam rangka optimalisasi pengelolaan data laporan dan administrasi Puskesmas secara terpusat, terstruktur, dan berbasis digital.</p>
+      <p class="hero-sub">Portal ini merupakan media optimalisasi kegiatan aktualisasi dan habituasi Pelatihan Dasar CPNS dalam rangka optimalisasi pengelolaan data laporan dan administrasi UPT Puskesmas Sapala secara terpusat, terstruktur, dan berbasis digital.</p>
       <div class="hero-stats">
         <div class="st-item"><div class="st-n">KMK</div><div class="st-l">Dasar Struktur</div></div>
         <div class="st-item"><div class="st-n">BerAKHLAK</div><div class="st-l">Nilai Dasar</div></div>
@@ -568,8 +568,8 @@ footer {
 <div class="page" id="page-klaster"></div>
 
 <footer>
-  <div class="ft-l"><strong>SIPADU</strong> — Sistem Informasi Pengelolaan Arsip dan Dokumen Umum<br/>Puskesmas · Aktualisasi Pelatihan Dasar CPNS 2025</div>
-  <div class="ft-r">Pengelola Sistem Informasi · Sub-Bagian Tata Usaha</div>
+  <div class="ft-l"><strong>SIPADU</strong> — Sistem Informasi Pengelolaan Arsip dan Dokumen Umum<br/>Puskesmas · Aktualisasi Pelatihan Dasar CPNS 2026</div>
+  <div class="ft-r">Penata Kelola Sistem dan Teknologi Informasi · Riyadi Fadli, S.Kom</div>
 </footer>
 
 <script>
@@ -682,6 +682,22 @@ const URL_DRIVE = {
   '2026_K1_FEB_SDM': 'https://srv1598234.hstgr.cloud/s/GxCqLFiDfZr9dGd',          
   '2026_K1_FEB_RME': 'https://srv1598234.hstgr.cloud/s/2tBJYJQDQS3F8PD',
   '2026_K1_FEB_SURAT_KET': 'https://srv1598234.hstgr.cloud/s/arJg29EQCNWYfNm',
+
+  '2026_K1_MAR_KUNJUNGAN': 'https://srv1598234.hstgr.cloud/s/9rGq7eZWcN6PMiS',
+  '2026_K1_MAR_LAP_EKSEKUTIF': 'https://srv1598234.hstgr.cloud/s/9QHgRGMLTnNcbQq',
+  '2026_K1_MAR_SP2TP': 'https://srv1598234.hstgr.cloud/s/wgpaEmQc7Mj4eDy',
+  '2026_K1_MAR_SDM': 'https://srv1598234.hstgr.cloud/s/gj763dqmdGo75fe',
+  '2026_K1_MAR_RME': 'https://srv1598234.hstgr.cloud/s/mQrw7HNgXW7ks8Z',
+  '2026_K1_MAR_SURAT_KET': 'https://srv1598234.hstgr.cloud/s/Msw9nMFNfrBkLBS',
+
+  '2026_K1_APR_KUNJUNGAN': 'https://srv1598234.hstgr.cloud/s/rt8yPQPFMGgxNk9',
+  '2026_K1_APR_LAP_EKSEKUTIF': 'https://srv1598234.hstgr.cloud/s/fjngMe6dQi3LfZj',
+  '2026_K1_APR_SP2TP': 'https://srv1598234.hstgr.cloud/s/S49jzTTBtdX2xMz',
+  '2026_K1_APR_SDM': 'https://srv1598234.hstgr.cloud/s/9ytSroWXNFpG34B',
+  '2026_K1_APR_RME': 'https://srv1598234.hstgr.cloud/s/qa6f78S5aFTCZ6W',
+  '2026_K1_APR_SURAT_KET': 'https://srv1598234.hstgr.cloud/s/JSpo3fpksyiJJRy',
+
+
 };
 
 /* Fungsi resolver URL: cek tabel di atas, kalau kosong → fallback ke placeholder */
@@ -721,7 +737,7 @@ function openSubfolder(subfolderSlug, namaTopik, e) {
   e.stopPropagation();
   const url = getDriveUrl(state.tahun, state.klasterAktif, state.bulan, subfolderSlug);
   if (url.startsWith('ID_')) {
-    alert(`Folder belum tersedia.\n\nPeriode: ${NAMA_BULAN[state.bulan]} ${state.tahun}\nKlaster: ${KLASTER_DATA[state.klasterAktif].label}\nTopik: ${namaTopik}\n\nGanti URL pada bagian URL_DRIVE di script dengan key:\n${url.replace('ID_','')}`);
+    alert(`Folder belum tersedia.\n\nPeriode: ${NAMA_BULAN[state.bulan]} ${state.tahun}\nKlaster: ${KLASTER_DATA[state.klasterAktif].label}\nTopik: ${namaTopik}\n\Admin belum mengunggah dokumen untuk sub-folder ini.\n\nSilakan hubungi admin untuk informasi lebih lanjut.`);
     return;
   }
   window.open(url, '_blank');
