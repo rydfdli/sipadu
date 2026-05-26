@@ -874,7 +874,7 @@ function openSubfolder(subfolderSlug, namaTopik, e) {
   e.stopPropagation();
   const url = getDriveUrl(state.tahun, state.klasterAktif, state.bulan, subfolderSlug);
   if (url.startsWith('ID_')) {
-    alert(`Folder belum tersedia.\n\nPeriode: ${NAMA_BULAN[state.bulan]} ${state.tahun}\nKlaster: ${KLASTER_DATA[state.klasterAktif].label}\nTopik: ${namaTopik}\n\nAdmin belum mengunggah dokumen untuk sub-folder ini.\nSilakan hubungi admin untuk informasi lebih lanjut.`);
+    alert(`Folder belum tersedia.\n\nPeriode: ${NAMA_BULAN[state.bulan]} ${state.tahun}\nKlaster: ${KLASTER_DATA[state.klasterAktif].label}\nTopik: ${namaTopik}\n\nAdmin belum mengunggah dokumen untuk sub-folder ini.\n Pilih bulan lainnya atau Silakan hubungi admin untuk informasi lebih lanjut.`);
     return;
   }
   window.open(url, '_blank');
