@@ -226,8 +226,118 @@ body {
 .gcard:hover .gc-arrow { background:var(--c,var(--teal));border-color:var(--c,var(--teal));box-shadow:0 0 14px var(--c-glow,rgba(45,212,191,.4));transform:translateX(2px); }
 .gcard:hover .gc-arrow svg { stroke:#060d18; }
 
+/* ── KARTU TEMPLATE SURAT ── */
+.inst-section { margin-top: 28px; }
+.inst-card {
+  position: relative; border-radius: 22px; cursor: pointer;
+  text-decoration: none; color: inherit; overflow: hidden;
+  background: linear-gradient(120deg, rgba(251,191,36,0.14) 0%, rgba(167,139,250,0.10) 50%, rgba(255,255,255,0.06) 100%);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid rgba(255,255,255,0.18);
+  box-shadow: 0 10px 44px rgba(0,0,0,0.28),
+              inset 0 1px 0 rgba(255,255,255,0.24),
+              inset 0 -1px 0 rgba(0,0,0,0.12);
+  padding: 24px 28px;
+  display: flex; align-items: center; gap: 22px;
+  transition: transform .3s cubic-bezier(.22,.68,0,1.2), box-shadow .3s, background .25s;
+}
+.inst-card::before {
+  content:''; position:absolute; top:0; left:10%; right:10%; height:1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+  pointer-events: none;
+}
+.inst-card::after {
+  content:''; position:absolute; inset:0; border-radius:22px;
+  background: radial-gradient(ellipse at 80% 50%, rgba(251,191,36,0.12), transparent 60%);
+  opacity: 0; transition: opacity .3s;
+  pointer-events: none;
+}
+.inst-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 60px rgba(0,0,0,0.36),
+              inset 0 1px 0 rgba(255,255,255,0.3),
+              0 0 0 1px rgba(255,255,255,0.15);
+}
+.inst-card:hover::after { opacity: 1; }
+
+.inst-icon-big {
+  width: 64px; height: 64px; border-radius: 18px;
+  background: linear-gradient(135deg, rgba(251,191,36,0.28), rgba(167,139,250,0.18));
+  border: 1px solid rgba(251,191,36,0.4);
+  display: flex; align-items: center; justify-content: center; font-size: 32px;
+  box-shadow: 0 4px 18px rgba(251,191,36,0.2), inset 0 1px 0 rgba(255,255,255,0.25);
+  flex-shrink: 0;
+}
+.inst-body { flex: 1; min-width: 0; }
+.inst-stamp {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 9.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(251,191,36,0.12); border: 1px solid rgba(251,191,36,0.3);
+  padding: 3px 10px; border-radius: 100px; margin-bottom: 8px;
+}
+.inst-stamp-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); }
+.inst-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: 22px; line-height: 1.15; letter-spacing: -.02em;
+  margin-bottom: 6px; color: var(--text);
+}
+.inst-desc { font-size: 13px; color: var(--muted); line-height: 1.6; max-width: 540px; }
+
+.inst-cta {
+  flex-shrink: 0; display: flex; align-items: center; gap: 8px;
+  padding: 12px 22px; border-radius: 100px;
+  background: linear-gradient(135deg, #fbbf24, #d97706);
+  color: #060d18; font-size: 12.5px; font-weight: 700;
+  letter-spacing: .04em;
+  border: 1px solid rgba(255,255,255,0.18);
+  box-shadow: 0 4px 16px rgba(251,191,36,0.3), inset 0 1px 0 rgba(255,255,255,0.3);
+  transition: transform .2s, box-shadow .2s;
+  white-space: nowrap;
+}
+.inst-card:hover .inst-cta {
+  transform: translateX(3px);
+  box-shadow: 0 8px 24px rgba(251,191,36,0.45), inset 0 1px 0 rgba(255,255,255,0.3);
+}
+
 /* ═══ KLASTER PAGE ═══ */
 .klaster-page { max-width: 960px; margin: 0 auto; padding: 40px 32px 80px; }
+
+/* Tombol Kembali ke Beranda */
+.back-btn {
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 8px 16px 8px 8px; margin-bottom: 22px;
+  border-radius: 100px; cursor: pointer;
+  font-family: 'Geist', sans-serif; font-size: 12.5px; font-weight: 600;
+  color: var(--muted); text-decoration: none;
+  background: rgba(255,255,255,.06);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(255,255,255,.13);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.16);
+  transition: all .2s ease;
+  user-select: none;
+}
+.back-btn:hover {
+  color: var(--text);
+  background: rgba(255,255,255,.11);
+  border-color: rgba(255,255,255,.22);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.22);
+  transform: translateX(-3px);
+}
+.back-btn:hover .back-btn-icon { background: var(--teal); border-color: var(--teal); }
+.back-btn:hover .back-btn-icon svg { stroke: #060d18; }
+
+.back-btn-icon {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.14);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: background .2s, border-color .2s;
+}
+.back-btn-icon svg { transition: stroke .2s; }
 
 .kp-header {
   display: flex; align-items: flex-start; gap: 22px; margin-bottom: 28px;
@@ -422,6 +532,9 @@ footer {
   .dropdown-wrap { flex: 1 1 calc(50% - 5px); min-width: 0; }
   .dropdown-trigger { width: 100%; min-width: 0; }
   .period-summary { flex-basis: 100%; margin-left: 0; }
+
+  .inst-card { flex-direction: column; align-items: flex-start; gap: 16px; padding: 22px; }
+  .inst-cta { align-self: stretch; justify-content: center; }
 }
 </style>
 </head>
@@ -562,6 +675,26 @@ footer {
         </div>
       </div>
     </div>
+
+    <!-- KARTU TEMPLATE SURAT -->
+    <div class="inst-section">
+      <div class="sec-hdr">
+        <span class="sec-tag">Akses Cepat</span>
+        <div class="sec-rule"></div>
+      </div>
+      <a class="inst-card" onclick="openTemplate(event)">
+        <div class="inst-icon-big">📝</div>
+        <div class="inst-body">
+          <span class="inst-stamp"><span class="inst-stamp-dot"></span>Katalog Template</span>
+          <div class="inst-title">Template Surat Resmi</div>
+          <div class="inst-desc">Koleksi surat tugas, undangan, rujukan, SK, KIR, dan template administrasi lainnya yang siap pakai.</div>
+        </div>
+        <div class="inst-cta">
+          Buka Template
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </div>
+      </a>
+    </div>
   </div>
 </div>
 
@@ -581,6 +714,18 @@ const TAHUN_AKTIF = 2026;
 
 const NAMA_BULAN = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
 const SLUG_BULAN = ['JAN','FEB','MAR','APR','MEI','JUN','JUL','AGU','SEP','OKT','NOV','DES'];
+
+/* URL Katalog Template Surat */
+const URL_TEMPLATE = 'https://srv1598234.hstgr.cloud/s/ID_TEMPLATE_SURAT';
+
+function openTemplate(e) {
+  e.preventDefault();
+  if (URL_TEMPLATE.indexOf('ID_') > -1) {
+    alert('URL Katalog Template Surat belum dikonfigurasi.\nGanti URL_TEMPLATE di bagian script dengan link folder template surat.');
+    return;
+  }
+  window.open(URL_TEMPLATE, '_blank');
+}
 
 /* Slug klaster untuk membentuk pola ID */
 const SLUG_KLASTER = { k1:'K1', k2:'K2', k3:'K3', k4:'K4', lk:'LK' };
@@ -661,11 +806,6 @@ const KLASTER_DATA = {
 
 /* ═══════════════════════════════════════════
    TABEL URL — Struktur: Tahun > Klaster > Bulan > Sub-folder
-   Format key: 'TAHUN_KLASTER_BULAN_SUBFOLDER'
-   Contoh: '2026_K1_MEI_PERENCANAAN'
-   
-   Tinggal isi URL Drive sesuai pola di bawah.
-   Bisa juga buat fungsi generator atau hardcode satu per satu.
 ═══════════════════════════════════════════ */
 const URL_DRIVE = {
   '2026_K1_JAN_KUNJUNGAN': 'https://srv1598234.hstgr.cloud/s/xSd78QaZa6WrG2b',
@@ -679,7 +819,7 @@ const URL_DRIVE = {
   '2026_K1_FEB_KUNJUNGAN': 'https://srv1598234.hstgr.cloud/s/2tBJYJQDQS3F8PD',
   '2026_K1_FEB_LAP_EKSEKUTIF': 'https://srv1598234.hstgr.cloud/s/3756DEJa6msaN7F',
   '2026_K1_FEB_SP2TP': 'https://srv1598234.hstgr.cloud/s/YQHPCJrRMLdjCMz',
-  '2026_K1_FEB_SDM': 'https://srv1598234.hstgr.cloud/s/GxCqLFiDfZr9dGd',          
+  '2026_K1_FEB_SDM': 'https://srv1598234.hstgr.cloud/s/GxCqLFiDfZr9dGd',
   '2026_K1_FEB_RME': 'https://srv1598234.hstgr.cloud/s/2tBJYJQDQS3F8PD',
   '2026_K1_FEB_SURAT_KET': 'https://srv1598234.hstgr.cloud/s/arJg29EQCNWYfNm',
 
@@ -696,11 +836,9 @@ const URL_DRIVE = {
   '2026_K1_APR_SDM': 'https://srv1598234.hstgr.cloud/s/9ytSroWXNFpG34B',
   '2026_K1_APR_RME': 'https://srv1598234.hstgr.cloud/s/qa6f78S5aFTCZ6W',
   '2026_K1_APR_SURAT_KET': 'https://srv1598234.hstgr.cloud/s/JSpo3fpksyiJJRy',
-
-
 };
 
-/* Fungsi resolver URL: cek tabel di atas, kalau kosong → fallback ke placeholder */
+/* Fungsi resolver URL */
 function getDriveUrl(tahun, klasterId, bulanIdx, subfolderSlug) {
   const key = `${tahun}_${SLUG_KLASTER[klasterId]}_${SLUG_BULAN[bulanIdx]}_${subfolderSlug}`;
   return URL_DRIVE[key] || `ID_${key}`;
@@ -712,10 +850,9 @@ function getDriveUrl(tahun, klasterId, bulanIdx, subfolderSlug) {
 let state = {
   klasterAktif: null,
   tahun: TAHUN_AKTIF,
-  bulan: new Date().getMonth(),  // 0-11
+  bulan: new Date().getMonth(),
 };
 
-/* ROUTING */
 function goHome() {
   document.getElementById('page-home').classList.add('active');
   document.getElementById('page-klaster').classList.remove('active');
@@ -737,13 +874,12 @@ function openSubfolder(subfolderSlug, namaTopik, e) {
   e.stopPropagation();
   const url = getDriveUrl(state.tahun, state.klasterAktif, state.bulan, subfolderSlug);
   if (url.startsWith('ID_')) {
-    alert(`Folder belum tersedia.\n\nPeriode: ${NAMA_BULAN[state.bulan]} ${state.tahun}\nKlaster: ${KLASTER_DATA[state.klasterAktif].label}\nTopik: ${namaTopik}\n\Admin belum mengunggah dokumen untuk sub-folder ini.\n\nSilakan hubungi admin untuk informasi lebih lanjut.`);
+    alert(`Folder belum tersedia.\n\nPeriode: ${NAMA_BULAN[state.bulan]} ${state.tahun}\nKlaster: ${KLASTER_DATA[state.klasterAktif].label}\nTopik: ${namaTopik}\n\nAdmin belum mengunggah dokumen untuk sub-folder ini.\nSilakan hubungi admin untuk informasi lebih lanjut.`);
     return;
   }
   window.open(url, '_blank');
 }
 
-/* RENDER */
 function renderKlasterPage() {
   const d = KLASTER_DATA[state.klasterAktif];
 
@@ -765,7 +901,6 @@ function renderKlasterPage() {
     </div>
   `).join('');
 
-  // Bangun opsi dropdown TERPISAH (hindari nested template literal)
   let tahunOpts = '';
   for (let i = 0; i < TAHUN_TERSEDIA.length; i++) {
     const y = TAHUN_TERSEDIA[i];
@@ -781,6 +916,15 @@ function renderKlasterPage() {
 
   document.getElementById('page-klaster').innerHTML = `
     <div class="klaster-page">
+      <a class="back-btn" onclick="goHome()">
+        <span class="back-btn-icon">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+          </svg>
+        </span>
+        Kembali ke Beranda
+      </a>
+
       <div class="kp-header">
         <div class="kp-icon-big" style="--ic-bg:${d.icBg};--ic-border:${d.icBorder};--ic-shadow:${d.icShadow};">${d.emoji}</div>
         <div class="kp-meta">
@@ -790,14 +934,12 @@ function renderKlasterPage() {
         </div>
       </div>
 
-      <!-- PERIOD SELECTOR -->
       <div class="period-bar">
         <div class="period-label">
           <span class="period-label-icon">📅</span>
           <span>Periode Arsip</span>
         </div>
 
-        <!-- Dropdown Tahun -->
         <div class="dropdown-wrap">
           <div class="dropdown-trigger" id="dd-tahun-trigger" onclick="toggleDropdown('tahun')">
             <span class="dt-text" id="dd-tahun-text">${state.tahun}</span>
@@ -806,7 +948,6 @@ function renderKlasterPage() {
           <div class="dropdown-menu" id="dd-tahun-menu">${tahunOpts}</div>
         </div>
 
-        <!-- Dropdown Bulan -->
         <div class="dropdown-wrap">
           <div class="dropdown-trigger" id="dd-bulan-trigger" onclick="toggleDropdown('bulan')">
             <span class="dt-text" id="dd-bulan-text">${NAMA_BULAN[state.bulan]}</span>
@@ -843,16 +984,9 @@ function toggleDropdown(which) {
   });
 }
 
-function selectTahun(y) {
-  state.tahun = y;
-  renderKlasterPage();
-}
-function selectBulan(i) {
-  state.bulan = i;
-  renderKlasterPage();
-}
+function selectTahun(y) { state.tahun = y; renderKlasterPage(); }
+function selectBulan(i) { state.bulan = i; renderKlasterPage(); }
 
-/* Tutup dropdown saat klik di luar */
 document.addEventListener('click', e => {
   if (!e.target.closest('.dropdown-wrap')) {
     document.querySelectorAll('.dropdown-trigger.open, .dropdown-menu.open').forEach(el => el.classList.remove('open'));
@@ -869,7 +1003,6 @@ function renderBC(trail) {
   bc.innerHTML = html;
 }
 
-/* Parallax */
 let tk = false;
 document.addEventListener('mousemove', e => {
   if (!tk) {
